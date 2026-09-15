@@ -260,7 +260,7 @@ export default function Home() {
 
           <h1>Ganesh Chaturthi</h1>
 
-          <p className="open-family">28 Years of Faith, Family & Joy</p>
+          <p className="open-family">25 Years of Faith, Family & Joy</p>
 
           <div className="open-mantra">
             {c.mantra.split("\n").map((line) => (
@@ -381,7 +381,7 @@ export default function Home() {
 
         <div className="welcome-layout">
           <div className="editorial-copy">
-            <span className="eyebrow">28 YEARS OF FAITH</span>
+            <span className="eyebrow">25 YEARS OF FAITH</span>
 
             <h2>{c.welcomeTitle}</h2>
 
