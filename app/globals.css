@@ -1,71 +1,3141 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
 
 :root {
-  --cream:#fff5df; --ivory:#fffaf0; --maroon:#641725; --wine:#741b3a; --saffron:#ed8a16;
-  --orange:#f29a24; --gold:#d3a04e; --pink:#d53f78; --magenta:#9b1d61; --purple:#432264;
-  --blue:#174b78; --teal:#20aeb2; --shadow:rgba(83,24,42,.24);
+  --cream:#fff5df;
+  --ivory:#fffaf0;
+  --maroon:#641725;
+  --wine:#741b3a;
+  --saffron:#ed8a16;
+  --orange:#f29a24;
+  --gold:#d3a04e;
+  --pink:#d53f78;
+  --magenta:#9b1d61;
+  --purple:#432264;
+  --blue:#174b78;
+  --teal:#20aeb2;
+  --shadow:rgba(83,24,42,.24);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#741b3a;color:var(--cream);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
-button{font:inherit} main{overflow:clip}
 
-.top-controls{position:fixed;z-index:80;top:18px;right:18px;display:flex;gap:10px;align-items:center}
-.language-switcher,.music-control{border:1px solid rgba(255,239,203,.42);background:rgba(117,38,66,.68);backdrop-filter:blur(14px);color:#fff4df;box-shadow:0 8px 28px rgba(116,35,55,.16)}
-.language-switcher{padding:4px;border-radius:999px;display:flex}.language-switcher button{border:0;background:transparent;color:rgba(255,244,223,.8);padding:7px 10px;border-radius:999px;cursor:pointer;font-size:11px}.language-switcher button.active{background:#ed8a16;color:white}
-.music-control{border-radius:999px;cursor:pointer;padding:7px 11px;display:flex;align-items:center;gap:7px}.music-control span{font-size:17px;line-height:1}.music-control small{font-size:10px;letter-spacing:.08em;text-transform:uppercase}
-
-/* Opening moment: a luminous invitation seal, not doors. */
-.open-screen{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,#f8b84e 0%,#d34b62 28%,#8d1e4e 58%,#4b245f 100%);transition:opacity .8s ease,visibility .8s ease}
-.open-screen-glow{position:absolute;width:70vmin;height:70vmin;border-radius:50%;background:radial-gradient(circle,rgba(255,244,184,.38),transparent 68%);filter:blur(10px);animation:openPulse 3s ease-in-out infinite}
-.open-card{position:relative;width:min(600px,88vw);padding:54px 35px 42px;text-align:center;border:1px solid rgba(255,239,198,.5);border-radius:34px;background:linear-gradient(145deg,rgba(132,31,62,.78),rgba(151,39,82,.72));box-shadow:0 30px 90px rgba(93,24,52,.26);overflow:hidden}
-.open-card:before{content:"";position:absolute;inset:15px;border:1px solid rgba(255,211,128,.2);border-radius:25px;pointer-events:none}
-.open-om{font-family:"Noto Sans Devanagari";font-size:68px;color:#ffd271;line-height:1}.open-invocation{font-family:"Noto Sans Devanagari";color:#ffe2a6;margin:8px 0 18px}.open-card-line{height:1px;width:90px;margin:0 auto 20px;background:#eab25d}.open-card h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(45px,7vw,72px);line-height:.9;margin:0;color:#fff8e8}.open-family{color:#ffd38a;letter-spacing:.16em;text-transform:uppercase;font-size:11px;margin:18px 0 20px}.open-mantra{font-family:"Noto Sans Devanagari";font-size:15px;line-height:1.9;color:#fff0cf}.open-mantra span{display:block}.tap-open{margin-top:28px;border:1px solid rgba(255,235,180,.7);border-radius:999px;background:linear-gradient(135deg,#f4a21e,#d54c61);color:#fffdf3;padding:13px 28px;cursor:pointer;box-shadow:0 0 30px rgba(255,184,65,.22);animation:tapGlow 2s ease-in-out infinite}.open-hint{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,242,210,.66);margin:14px 0 0}.open-screen-hidden{opacity:0;visibility:hidden;pointer-events:none}
-
-.festival-lights{position:absolute;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:7}.festival-lights:before{content:"";position:absolute;top:7px;left:0;right:0;height:1px;background:rgba(255,216,139,.38)}.festival-lights span{position:relative;width:11px;height:11px;border-radius:50%;background:#ffd16b;box-shadow:0 0 18px rgba(255,203,84,.82);animation:twinkle 1.9s ease-in-out infinite alternate}.festival-lights span:nth-child(2n){animation-delay:-.6s}.festival-lights span:nth-child(3n){animation-delay:-1.2s}
-
-.scene{min-height:100svh;position:relative;overflow:hidden;isolation:isolate}
-.hero-scene{display:grid;place-items:center;background:radial-gradient(circle at 50% 42%,rgba(255,201,92,.32),transparent 31%),linear-gradient(120deg,#8c2725 0%,#ad2450 48%,#4d2a70 100%)}
-.scene-backdrop{position:absolute;inset:0;z-index:-3}.backdrop-home{background:radial-gradient(ellipse at 50% 70%,rgba(255,183,55,.23),transparent 43%),repeating-linear-gradient(90deg,rgba(255,221,139,.06) 0 1px,transparent 1px 90px)}
-.hero-lights{top:22px;left:50%;transform:translateX(-50%);width:min(850px,82vw)}
-.arch{position:absolute;z-index:-2;border:1px solid rgba(255,222,157,.18);border-bottom:0;border-radius:50% 50% 0 0;transform:translateX(-50%);left:50%;bottom:13%;width:min(78vw,760px);height:65vh;box-shadow:inset 0 0 90px rgba(255,190,71,.07)}.arch-two{width:min(67vw,650px);height:57vh;border-color:rgba(249,199,105,.14)}
-.toran{position:absolute;top:0;left:50%;width:min(900px,96vw);transform:translateX(-50%);display:flex;justify-content:space-between;padding:0 4%;opacity:.84}.toran i{width:52px;height:74px;margin-top:-15px;border-radius:50%;background:radial-gradient(circle at 50% 30%,#ffd64d 0 18%,#ef941d 20% 60%,transparent 62%);filter:drop-shadow(0 5px 12px rgba(120,35,50,.18))}
-.hero-copy{position:absolute;z-index:8;top:8%;left:50%;transform:translateX(-50%);text-align:center;width:min(760px,92vw);display:grid;justify-items:center;gap:4px}.om-mark{font-family:"Noto Sans Devanagari";font-size:clamp(42px,7vw,66px);color:#f1c25f}.invocation,.devanagari{font-family:"Noto Sans Devanagari";letter-spacing:.04em}.invocation{margin:0 0 8px;color:#f9dba0;font-size:14px}.hero-copy h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif}.hero-copy h1{margin:0;font-size:clamp(48px,6.4vw,76px);line-height:.9;font-weight:600;color:#fff8ea}.hero-sub{margin:10px 0 0;color:#ffd890;letter-spacing:.16em;text-transform:uppercase;font-size:12px}.hero-mantra{margin-top:10px;font-family:"Noto Sans Devanagari";font-size:12px;line-height:1.7;color:#ffe7b2}.hero-mantra span{display:block}.hero-morya{margin-top:7px;font-family:"Noto Sans Devanagari";font-size:19px;color:#ffd06b}
-.bappa-frame{position:relative;display:grid;place-items:end center;filter:drop-shadow(0 25px 35px rgba(103,35,52,.18));isolation:isolate}.bappa-arch{position:absolute;inset:4% -8% 0;border:1px solid rgba(255,219,148,.25);border-bottom:0;border-radius:48% 48% 0 0;background:radial-gradient(ellipse at 50% 32%,rgba(255,186,58,.2),transparent 48%);z-index:-2}.bappa-arch:before,.bappa-arch:after{content:"";position:absolute;top:8%;bottom:0;width:18px;border-radius:20px;background:linear-gradient(180deg,#d9a146,#a95d2e);opacity:.45}.bappa-arch:before{left:-12px}.bappa-arch:after{right:-12px}.bappa-backdrop-lights{position:absolute;top:2%;left:5%;right:5%;display:flex;justify-content:space-between;z-index:-1}.bappa-backdrop-lights span{width:8px;height:8px;border-radius:50%;background:#ffd66f;box-shadow:0 0 18px rgba(255,205,92,.85);animation:twinkle 1.8s ease-in-out infinite alternate}.bappa-glow{position:absolute;inset:8% 8% 5%;border-radius:50%;background:radial-gradient(circle,rgba(255,190,65,.32),transparent 62%);filter:blur(24px);z-index:-1}.bappa-image{display:block;max-width:100%;height:auto;object-fit:contain;border-radius:22px;position:relative;z-index:2}.hero-bappa{width:min(500px,56vw);max-height:54vh;position:absolute;z-index:4;bottom:8%;left:50%;transform:translateX(-50%)}.hero-bappa .bappa-image{max-height:54vh;width:auto;box-shadow:0 18px 45px rgba(84,27,31,.18)}
-.altar-floor{position:absolute;bottom:0;left:-5%;width:110%;height:17%;background:linear-gradient(180deg,rgba(175,73,28,.05),rgba(151,67,42,.38)),repeating-linear-gradient(90deg,#8b392b 0 90px,#a94b29 90px 180px);transform:perspective(500px) rotateX(55deg);transform-origin:bottom;z-index:1}
-.diya{width:44px;height:25px;border-radius:0 0 40px 40px;background:linear-gradient(#e9b34d,#b76b2b);position:relative;box-shadow:0 8px 24px rgba(236,140,25,.22)}.diya span{position:absolute;width:13px;height:28px;left:50%;top:-25px;transform:translateX(-50%);background:radial-gradient(circle at 50% 72%,#fff3b0 0 12%,#ffb31b 35%,transparent 70%);border-radius:50% 50% 45% 45%;animation:flicker 1.7s ease-in-out infinite alternate}.diya-left,.diya-right{position:absolute;z-index:5;bottom:17%}.diya-left{left:12%}.diya-right{right:12%}
-.petals{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:hidden}.petals span{position:absolute;width:8px;height:13px;border-radius:70% 30% 70% 30%;background:#f4b51c;left:calc((var(--i)*17 + 7)*1%);top:-10%;opacity:.62;animation:petalFall calc(9s + var(--i)*.8s) linear infinite;animation-delay:calc(var(--i)*-.9s);transform:rotate(25deg)}.petals span:nth-child(3n){background:#d83b62}.petals span:nth-child(4n){background:#f2e0aa}
-.scroll-cue{position:absolute;z-index:8;bottom:24px;left:50%;transform:translateX(-50%);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,244,223,.76)}.scroll-cue span{display:block;text-align:center;font-size:18px;margin-top:5px}
-
-.welcome-scene{background:radial-gradient(circle at 80% 25%,rgba(225,72,115,.17),transparent 24%),radial-gradient(circle at 10% 80%,rgba(236,138,22,.17),transparent 25%),linear-gradient(135deg,#fff7ea,#ffe6d8 55%,#f5cbd8);color:var(--maroon);display:grid;place-items:center}.welcome-lights{top:22px;left:10%;right:10%;width:80%;}.welcome-lights span{background:#d99535;box-shadow:0 0 16px rgba(217,149,53,.45)}
-.welcome-layout{width:min(1180px,90vw);display:grid;grid-template-columns:1fr .9fr;gap:clamp(40px,8vw,110px);align-items:center}.editorial-copy{max-width:590px}.eyebrow{letter-spacing:.2em;font-size:10px;font-weight:600;color:#a85b30}.editorial-copy h2,.anand-copy h2{font-size:clamp(46px,6vw,76px);line-height:.88;margin:18px 0 28px;color:var(--maroon)}.editorial-copy p{font-size:16px;line-height:1.85;color:#68333a}.morya,.closing-morya{font-family:"Noto Sans Devanagari";font-size:22px;color:#a32a52;margin-top:28px}.portrait-stage{position:relative;min-height:620px;display:grid;place-items:center}.portrait-stage .bappa-frame{width:min(470px,80vw);z-index:2}.portrait-stage .bappa-image{box-shadow:0 30px 80px rgba(139,53,65,.16)}.portrait-ring{position:absolute;width:92%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(167,65,72,.24);box-shadow:0 0 0 32px rgba(188,77,92,.035),0 0 80px rgba(188,77,92,.14)}.floating-shri{position:absolute;right:5%;top:15%;font-family:"Noto Sans Devanagari";font-size:55px;color:rgba(150,66,65,.25)}.soft-orb{position:absolute;border-radius:50%;filter:blur(1px)}.orb-a{width:160px;height:160px;right:3%;top:7%;background:rgba(231,148,36,.14)}.orb-b{width:240px;height:240px;left:-70px;bottom:-60px;background:rgba(180,48,93,.10)}
-
-.sthapana-scene{display:grid;place-items:center;background:linear-gradient(135deg,#641725,#81203b 52%,#54235d);color:var(--cream)}.backdrop-altar{background:radial-gradient(circle at 50% 30%,rgba(229,146,29,.3),transparent 35%),repeating-linear-gradient(90deg,rgba(227,158,63,.05) 0 1px,transparent 1px 70px)}.section-lights{top:24px;left:10%;width:80%}.section-lights span{width:9px;height:9px}.marigold-border{position:absolute;top:0;left:0;right:0;height:18px;background:repeating-linear-gradient(90deg,#e9901b 0 22px,#f3bd39 22px 42px,#c93b67 42px 62px);opacity:.8}
-.sthapana-layout{width:min(1180px,90vw);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(40px,7vw,100px)}.sthapana-art{position:relative;display:grid;place-items:center;min-height:650px}.sthapana-art .bappa-frame{width:min(560px,78vw);z-index:3}.sthapana-art .bappa-image{max-height:72vh;box-shadow:0 30px 60px rgba(86,28,48,.24)}.rangoli{position:absolute;width:410px;max-width:72vw;aspect-ratio:1;border-radius:50%;border:1px solid rgba(245,197,97,.35);box-shadow:0 0 0 18px rgba(239,147,22,.04),inset 0 0 50px rgba(239,147,22,.06);display:grid;place-items:center;transform:rotate(15deg)}.rangoli:before,.rangoli:after{content:"";position:absolute;inset:12%;border:1px dashed rgba(245,197,97,.25);border-radius:50%}.rangoli:after{inset:27%;transform:rotate(45deg)}.rangoli span{font-family:"Noto Sans Devanagari";font-size:45px;color:rgba(245,197,97,.3)}.altar-diyas{position:absolute;bottom:9%;display:flex;gap:180px;z-index:5}.event-copy{max-width:470px}.event-copy .devanagari{font-size:30px;color:#f2b95d;margin:0}.event-copy h2{font-size:clamp(52px,6vw,82px);line-height:.8;margin:8px 0 25px}.date-display{font-size:18px;letter-spacing:.12em;color:#f8d49c}.ornament-line{color:#e9a13b;margin:28px 0}.event-copy p:not(.devanagari){line-height:1.8;color:#f0d5ba}.mantra{margin-top:28px;font-family:"Noto Sans Devanagari";color:#ffca71;font-size:22px}.dark-morya{color:#ffd06b}
-
-.bhakti-scene{background:radial-gradient(circle at 72% 50%,rgba(244,158,39,.34),transparent 25%),radial-gradient(circle at 20% 30%,rgba(147,24,50,.45),transparent 35%),linear-gradient(120deg,#761a2d,#a92e50 55%,#51276c);display:grid;place-items:center}.bhakti-layout{width:min(1160px,90vw);display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}.bhakti-copy .large{font-size:34px;color:#f5c779;margin:16px 0 0}.bhakti-copy h2{font-size:clamp(56px,7vw,96px);margin:2px 0 30px;line-height:.78}.time-list{border-top:1px solid rgba(255,215,154,.22)}.time-list div{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,215,154,.22);align-items:center}.time-list span{font-size:11px;color:#dc9b48}.time-list strong{font-weight:500;color:#ffe5b4}.small-copy{color:rgba(255,235,200,.74);line-height:1.7;font-size:13px;margin-top:25px}.aarti-visual{position:relative;min-height:650px;display:grid;place-items:center}.aarti-visual .bappa-frame{width:min(590px,80vw);z-index:3}.aarti-visual .bappa-image{box-shadow:0 28px 70px rgba(86,24,37,.18)}.aarti-halo{position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,196,83,.25),transparent 65%);filter:blur(14px)}.incense{position:absolute;right:3%;bottom:18%}.incense i{display:block;width:2px;height:75px;background:rgba(255,229,198,.32);margin:8px;border-radius:50%;filter:blur(1px);animation:smoke 4s ease-in-out infinite}.incense i:nth-child(2){animation-delay:-1.2s;height:60px}.incense i:nth-child(3){animation-delay:-2.4s;height:90px}.aarti-diya{position:absolute;bottom:13%;z-index:6}.aarti-diya-left{left:2%}.aarti-diya-right{right:2%}.bhakti-morya{margin-top:20px;color:#ffd16e}
-
-.anand-scene{background:radial-gradient(circle at 50% 20%,rgba(247,162,44,.3),transparent 28%),linear-gradient(135deg,#671747,#92245f 45%,#284a78);display:grid;place-items:center}.anand-layout{width:min(1120px,90vw);display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.anand-copy h2{color:#fff0d4;max-width:570px}.anand-copy .every{color:#f7c86d;text-transform:uppercase;letter-spacing:.2em;font-size:11px}.time-pill{display:inline-block;border:1px solid rgba(255,217,150,.42);border-radius:999px;padding:11px 16px;color:#ffe0a6;margin:8px 0 22px}.anand-copy p{color:rgba(255,235,214,.84);line-height:1.7}.music-notes{color:#f5b750;letter-spacing:.5em;font-size:24px;margin-top:25px}.light-string{position:absolute;top:9%;left:50%;width:80%;transform:translateX(-50%);display:flex;justify-content:space-between}.light-string:before{content:"";position:absolute;top:8px;left:0;right:0;height:1px;background:rgba(255,222,160,.35)}.light-string span{width:10px;height:10px;border-radius:50%;background:#ffd46e;box-shadow:0 0 22px rgba(255,204,87,.85);z-index:2;animation:twinkle 1.8s ease-in-out infinite alternate}.family-window{height:min(630px,75vh);position:relative;overflow:hidden;border-radius:180px 180px 20px 20px;border:1px solid rgba(255,222,160,.28);background:linear-gradient(180deg,rgba(255,184,78,.12),rgba(91,37,92,.26)),radial-gradient(circle at 50% 38%,rgba(255,178,57,.42),transparent 25%);box-shadow:0 35px 70px rgba(102,42,76,.18)}.window-glow{position:absolute;inset:12%;border-radius:50%;background:rgba(255,170,53,.13);filter:blur(30px)}.window-arch{position:absolute;inset:8% 10% 0;border:1px solid rgba(255,216,138,.25);border-bottom:0;border-radius:50% 50% 0 0}.bappa-mini{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);width:70%;z-index:3}.bappa-mini img{display:block;width:100%;border-radius:20px;filter:saturate(1.05)}.home-lamps{position:absolute;bottom:8%;left:8%;right:8%;display:flex;justify-content:space-between;z-index:5}.home-lamps .diya{transform:scale(.75)}
-
-.visarjan-scene{background:linear-gradient(180deg,#ffb45f 0%,#f58a72 27%,#e56b82 48%,#55c2c5 72%,#36b6d0 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:7vh 20px 6vh}.sunset{position:absolute;width:270px;height:270px;border-radius:50%;top:12%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,#fff0ae 0%,#ffd16e 40%,#f59b4d 54%,transparent 72%);filter:blur(1px);opacity:.94}.water{position:absolute;bottom:0;left:0;right:0;height:43%;background:linear-gradient(180deg,rgba(52,180,196,.2),rgba(34,173,203,.58)),repeating-linear-gradient(180deg,rgba(255,239,188,.2) 0 2px,transparent 2px 18px)}.water span{position:absolute;height:1px;background:rgba(255,238,191,.55);width:24%;animation:wave 6s ease-in-out infinite}.water span:nth-child(1){top:22%;left:7%}.water span:nth-child(2){top:44%;right:8%;animation-delay:-2s}.water span:nth-child(3){top:70%;left:35%;animation-delay:-4s}.visarjan-lights{top:22px;left:10%;width:80%}.visarjan-copy{position:relative;z-index:5;width:min(720px,92vw);text-align:center;text-shadow:0 3px 16px rgba(111,48,57,.14)}.visarjan-copy .large{font-size:35px;margin:0;color:#fff2ce}.visarjan-copy h2{font-size:clamp(56px,8vw,100px);line-height:.8;margin:4px 0 18px}.visarjan-date{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#fff0bd}.visarjan-time{margin-top:8px;color:#fff8d8}.visarjan-bappa{position:relative;z-index:4;width:min(320px,38vw);margin:2vh 0 0;display:grid;place-items:center;filter:drop-shadow(0 22px 34px rgba(80,48,57,.16))}.visarjan-halo{position:absolute;width:125%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,245,190,.3),transparent 67%);filter:blur(12px)}.visarjan-bappa img{width:100%;display:block;border-radius:22px;filter:saturate(1.05) contrast(.99);box-shadow:0 18px 45px rgba(92,46,58,.14)}.visarjan-copy-bottom{margin-top:2vh}.visarjan-copy p{max-width:560px;margin:18px auto 10px;line-height:1.8;color:rgba(255,250,229,.95)}.visarjan-copy em{display:block;font-family:"Cormorant Garamond";font-size:28px;color:#fff7db}.visarjan-copy strong{display:block;font-family:"Noto Sans Devanagari";font-size:25px;margin-top:20px;color:#fff3b8}
-
-.closing{min-height:46svh;background:radial-gradient(circle at 50% 20%,rgba(255,193,75,.3),transparent 28%),linear-gradient(145deg,#b83c5b,#df6681 46%,#8b4d9d 100%);display:grid;place-items:center;text-align:center;padding:70px 20px;color:#fff2d7;position:relative;overflow:hidden}.closing .section-lights{top:26px}.closing-symbol{font-family:"Noto Sans Devanagari";color:#ffd36b;font-size:46px}.closing p{margin:12px 0 6px;font-family:"Cormorant Garamond";font-size:30px}.closing span{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#ffe1a6}.closing h3{font-size:37px;margin:13px 0;font-weight:500}.closing-morya{color:#fff2b4}.closing-line{margin-top:22px;color:#ffe08a;font-family:"Noto Sans Devanagari"}
-
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:none}
-@keyframes flicker{from{transform:translateX(-50%) scale(.88) rotate(-2deg);opacity:.78}to{transform:translateX(-50%) scale(1.08) rotate(3deg);opacity:1}}
-@keyframes twinkle{from{opacity:.45;transform:scale(.72)}to{opacity:1;transform:scale(1.15)}}
-@keyframes petalFall{to{transform:translate3d(calc((var(--i) - 5)*20px),115vh,0) rotate(420deg)}}
-@keyframes smoke{50%{transform:translate(-8px,-10px) rotate(4deg);opacity:.15}}
-@keyframes wave{50%{transform:translateX(22px);opacity:.55}}
-@keyframes openPulse{50%{transform:scale(1.08);opacity:.8}}
-@keyframes tapGlow{50%{box-shadow:0 0 42px rgba(255,184,65,.42);transform:translateY(-1px)}}
-
-@media(max-width:820px){
- .top-controls{top:10px;right:10px}.hero-copy{top:7%}.hero-copy h1{font-size:clamp(45px,13vw,68px)}.hero-bappa{width:min(440px,82vw);bottom:12%}.diya-left{left:5%}.diya-right{right:5%}
- .welcome-layout,.sthapana-layout,.bhakti-layout,.anand-layout{grid-template-columns:1fr;gap:30px;width:min(92vw,620px)}
- .welcome-scene,.sthapana-scene,.bhakti-scene,.anand-scene{min-height:auto;padding:100px 0}.portrait-stage{min-height:520px}.portrait-ring{width:88%}.sthapana-art{min-height:520px;order:1}.event-copy{order:2;text-align:center;margin:0 auto;padding-bottom:40px}.altar-diyas{gap:120px}.bhakti-copy{order:2;text-align:center}.aarti-visual{min-height:510px;order:1}.time-list{text-align:left}.anand-copy{text-align:center;order:2;padding-bottom:30px}.family-window{height:540px;order:1;width:100%}.visarjan-scene{min-height:auto;padding-top:90px}.visarjan-bappa{width:min(300px,66vw)}.visarjan-copy-bottom{padding-bottom:30px}
+* {
+  box-sizing:border-box;
 }
-@media(max-width:520px){
- .language-switcher button{padding:6px 8px;font-size:10px}.music-control small{display:none}.hero-bappa{bottom:14%;width:88vw;max-height:54vh}.scroll-cue{bottom:12px;font-size:9px}.hero-copy{width:96vw}.invocation{font-size:12px}.hero-sub{letter-spacing:.12em}.hero-mantra{font-size:10px}.hero-morya{font-size:17px}.editorial-copy h2,.anand-copy h2{font-size:52px}.portrait-stage{min-height:450px}.sthapana-art{min-height:440px}.rangoli{width:330px}.altar-diyas{gap:80px;bottom:8%}.aarti-visual{min-height:430px}.aarti-diya-left{left:-1%}.aarti-diya-right{right:-1%}.family-window{height:470px;border-radius:120px 120px 16px 16px}.bappa-mini{width:82%}.visarjan-bappa{width:min(285px,72vw)}.visarjan-copy{width:92vw}.visarjan-copy h2{font-size:58px}.open-card{padding:46px 22px 34px}.open-mantra{font-size:12px}.festival-lights{width:82%;left:9%}
+
+html {
+  scroll-behavior:smooth;
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+
+body {
+  margin:0;
+  background:#741b3a;
+  color:var(--cream);
+  font-family:Inter,system-ui,sans-serif;
+  overflow-x:hidden;
+}
+
+button {
+  font:inherit;
+}
+
+main {
+  overflow:clip;
+}
+
+
+/* =========================================================
+   TOP CONTROLS
+   ========================================================= */
+
+.top-controls {
+  position:fixed;
+  z-index:80;
+  top:18px;
+  right:18px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.language-switcher,
+.music-control {
+  border:1px solid rgba(255,239,203,.42);
+  background:rgba(117,38,66,.68);
+  backdrop-filter:blur(14px);
+  color:#fff4df;
+  box-shadow:0 8px 28px rgba(116,35,55,.16);
+}
+
+.language-switcher {
+  padding:4px;
+  border-radius:999px;
+  display:flex;
+}
+
+.language-switcher button {
+  border:0;
+  background:transparent;
+  color:rgba(255,244,223,.8);
+  padding:7px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:11px;
+}
+
+.language-switcher button.active {
+  background:#ed8a16;
+  color:white;
+}
+
+.music-control {
+  border-radius:999px;
+  cursor:pointer;
+  padding:7px 11px;
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.music-control span {
+  font-size:17px;
+  line-height:1;
+}
+
+.music-control small {
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   OPENING SCREEN
+   ========================================================= */
+
+.open-screen {
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:grid;
+  place-items:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      #f8b84e 0%,
+      #d34b62 28%,
+      #8d1e4e 58%,
+      #4b245f 100%
+    );
+
+  transition:
+    opacity .8s ease,
+    visibility .8s ease;
+}
+
+.open-screen-glow {
+  position:absolute;
+  width:70vmin;
+  height:70vmin;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,244,184,.38),
+      transparent 68%
+    );
+
+  filter:blur(10px);
+
+  animation:
+    openPulse
+    3s
+    ease-in-out
+    infinite;
+}
+
+.open-card {
+  position:relative;
+
+  width:min(600px,88vw);
+
+  padding:54px 35px 42px;
+
+  text-align:center;
+
+  border:1px solid rgba(255,239,198,.5);
+  border-radius:34px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(132,31,62,.78),
+      rgba(151,39,82,.72)
+    );
+
+  box-shadow:
+    0 30px 90px
+    rgba(93,24,52,.26);
+
+  overflow:hidden;
+}
+
+.open-card:before {
+  content:"";
+
+  position:absolute;
+  inset:15px;
+
+  border:1px solid
+    rgba(255,211,128,.2);
+
+  border-radius:25px;
+
+  pointer-events:none;
+}
+
+.open-om {
+  font-family:"Noto Sans Devanagari";
+  font-size:68px;
+  color:#ffd271;
+  line-height:1;
+}
+
+.open-invocation {
+  font-family:"Noto Sans Devanagari";
+  color:#ffe2a6;
+  margin:8px 0 18px;
+}
+
+.open-card-line {
+  height:1px;
+  width:90px;
+  margin:0 auto 20px;
+  background:#eab25d;
+}
+
+.open-card h1 {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      45px,
+      7vw,
+      72px
+    );
+
+  line-height:.9;
+
+  margin:0;
+
+  color:#fff8e8;
+}
+
+.open-family {
+  color:#ffd38a;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:11px;
+  margin:18px 0 20px;
+}
+
+.open-mantra {
+  font-family:"Noto Sans Devanagari";
+  font-size:15px;
+  line-height:1.9;
+  color:#fff0cf;
+}
+
+.open-mantra span {
+  display:block;
+}
+
+.tap-open {
+  margin-top:28px;
+
+  border:1px solid
+    rgba(255,235,180,.7);
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4a21e,
+      #d54c61
+    );
+
+  color:#fffdf3;
+
+  padding:13px 28px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 30px
+    rgba(255,184,65,.22);
+
+  animation:
+    tapGlow
+    2s
+    ease-in-out
+    infinite;
+}
+
+.open-hint {
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,242,210,.66);
+  margin:14px 0 0;
+}
+
+.open-screen-hidden {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   FESTIVAL LIGHTS
+   ========================================================= */
+
+.festival-lights {
+  position:absolute;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+
+  pointer-events:none;
+  z-index:7;
+}
+
+.festival-lights:before {
+  content:"";
+
+  position:absolute;
+
+  top:7px;
+  left:0;
+  right:0;
+
+  height:1px;
+
+  background:
+    rgba(255,216,139,.38);
+}
+
+.festival-lights span {
+  position:relative;
+
+  width:11px;
+  height:11px;
+
+  border-radius:50%;
+
+  background:#ffd16b;
+
+  box-shadow:
+    0 0 18px
+    rgba(255,203,84,.82);
+
+  animation:
+    twinkle
+    1.9s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.festival-lights span:nth-child(2n) {
+  animation-delay:-.6s;
+}
+
+.festival-lights span:nth-child(3n) {
+  animation-delay:-1.2s;
+}
+
+
+/* =========================================================
+   SCENES
+   ========================================================= */
+
+.scene {
+  min-height:100svh;
+
+  position:relative;
+
+  overflow:hidden;
+
+  isolation:isolate;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-scene {
+  display:grid;
+  place-items:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255,201,92,.32),
+      transparent 31%
+    ),
+    linear-gradient(
+      120deg,
+      #8c2725 0%,
+      #ad2450 48%,
+      #4d2a70 100%
+    );
+}
+
+.scene-backdrop {
+  position:absolute;
+  inset:0;
+  z-index:-3;
+}
+
+.backdrop-home {
+  background:
+    radial-gradient(
+      ellipse at 50% 70%,
+      rgba(255,183,55,.23),
+      transparent 43%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,221,139,.06) 0 1px,
+      transparent 1px 90px
+    );
+}
+
+.hero-lights {
+  top:22px;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  width:min(850px,82vw);
+}
+
+.arch {
+  position:absolute;
+  z-index:-2;
+
+  border:
+    1px solid
+    rgba(255,222,157,.18);
+
+  border-bottom:0;
+
+  border-radius:
+    50% 50% 0 0;
+
+  transform:
+    translateX(-50%);
+
+  left:50%;
+  bottom:13%;
+
+  width:min(78vw,760px);
+  height:65vh;
+
+  box-shadow:
+    inset 0 0 90px
+    rgba(255,190,71,.07);
+}
+
+.arch-two {
+  width:min(67vw,650px);
+  height:57vh;
+
+  border-color:
+    rgba(249,199,105,.14);
+}
+
+.toran {
+  position:absolute;
+
+  top:0;
+  left:50%;
+
+  width:min(900px,96vw);
+
+  transform:
+    translateX(-50%);
+
+  display:flex;
+  justify-content:space-between;
+
+  padding:0 4%;
+
+  opacity:.84;
+}
+
+.toran i {
+  width:52px;
+  height:74px;
+
+  margin-top:-15px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      #ffd64d 0 18%,
+      #ef941d 20% 60%,
+      transparent 62%
+    );
+
+  filter:
+    drop-shadow(
+      0 5px 12px
+      rgba(120,35,50,.18)
+    );
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.hero-copy {
+  position:absolute;
+
+  z-index:8;
+
+  top:3.5%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  text-align:center;
+
+  width:min(900px,92vw);
+
+  display:grid;
+  justify-items:center;
+
+  gap:3px;
+
+  pointer-events:none;
+}
+
+.om-mark {
+  font-family:"Noto Sans Devanagari";
+
+  font-size:
+    clamp(
+      34px,
+      5vw,
+      52px
+    );
+
+  color:#f1c25f;
+
+  line-height:1;
+}
+
+.invocation,
+.devanagari {
+  font-family:
+    "Noto Sans Devanagari";
+
+  letter-spacing:.04em;
+}
+
+.invocation {
+  margin:0 0 5px;
+
+  color:#f9dba0;
+
+  font-size:13px;
+}
+
+.hero-copy h1,
+h2,
+h3 {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+}
+
+.hero-copy h1 {
+  margin:0;
+
+  font-size:
+    clamp(
+      42px,
+      5.3vw,
+      68px
+    );
+
+  line-height:.9;
+
+  font-weight:600;
+
+  color:#fff8ea;
+
+  text-shadow:
+    0 3px 16px
+    rgba(83,24,42,.28);
+}
+
+.hero-sub {
+  margin:8px 0 0;
+
+  color:#ffd890;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  font-size:12px;
+}
+
+.hero-mantra {
+  margin-top:8px;
+
+  font-family:
+    "Noto Sans Devanagari";
+
+  font-size:11px;
+
+  line-height:1.55;
+
+  color:#ffe7b2;
+
+  text-shadow:
+    0 2px 8px
+    rgba(74,20,38,.35);
+}
+
+.hero-mantra span {
+  display:block;
+}
+
+
+/* =========================================================
+   BAPPA
+   ========================================================= */
+
+.bappa-frame {
+  position:relative;
+
+  display:grid;
+  place-items:end center;
+
+  filter:
+    drop-shadow(
+      0 25px 35px
+      rgba(103,35,52,.18)
+    );
+
+  isolation:isolate;
+}
+
+.bappa-arch {
+  position:absolute;
+
+  inset:4% -8% 0;
+
+  border:
+    1px solid
+    rgba(255,219,148,.25);
+
+  border-bottom:0;
+
+  border-radius:
+    48% 48% 0 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 32%,
+      rgba(255,186,58,.2),
+      transparent 48%
+    );
+
+  z-index:-2;
+}
+
+.bappa-arch:before,
+.bappa-arch:after {
+  content:"";
+
+  position:absolute;
+
+  top:8%;
+  bottom:0;
+
+  width:18px;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d9a146,
+      #a95d2e
+    );
+
+  opacity:.45;
+}
+
+.bappa-arch:before {
+  left:-12px;
+}
+
+.bappa-arch:after {
+  right:-12px;
+}
+
+.bappa-backdrop-lights {
+  position:absolute;
+
+  top:2%;
+  left:5%;
+  right:5%;
+
+  display:flex;
+  justify-content:space-between;
+
+  z-index:-1;
+}
+
+.bappa-backdrop-lights span {
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#ffd66f;
+
+  box-shadow:
+    0 0 18px
+    rgba(255,205,92,.85);
+
+  animation:
+    twinkle
+    1.8s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.bappa-glow {
+  position:absolute;
+
+  inset:8% 8% 5%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,190,65,.32),
+      transparent 62%
+    );
+
+  filter:blur(24px);
+
+  z-index:-1;
+}
+
+.bappa-image {
+  display:block;
+
+  max-width:100%;
+  height:auto;
+
+  object-fit:contain;
+
+  border-radius:22px;
+
+  position:relative;
+
+  z-index:2;
+}
+
+
+/* =========================================================
+   HERO BAPPA POSITION
+   ========================================================= */
+
+.hero-bappa {
+  width:min(470px,52vw);
+
+  max-height:51vh;
+
+  position:absolute;
+
+  z-index:4;
+
+  bottom:10%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+}
+
+.hero-bappa .bappa-image {
+  max-height:51vh;
+
+  width:auto;
+
+  box-shadow:
+    0 18px 45px
+    rgba(84,27,31,.18);
+}
+
+
+/* =========================================================
+   ALTAR FLOOR
+   ========================================================= */
+
+.altar-floor {
+  position:absolute;
+
+  bottom:0;
+  left:-5%;
+
+  width:110%;
+  height:17%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(175,73,28,.05),
+      rgba(151,67,42,.38)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #8b392b 0 90px,
+      #a94b29 90px 180px
+    );
+
+  transform:
+    perspective(500px)
+    rotateX(55deg);
+
+  transform-origin:bottom;
+
+  z-index:1;
+}
+
+
+/* =========================================================
+   DIYA
+   ========================================================= */
+
+.diya {
+  width:44px;
+  height:25px;
+
+  border-radius:
+    0 0 40px 40px;
+
+  background:
+    linear-gradient(
+      #e9b34d,
+      #b76b2b
+    );
+
+  position:relative;
+
+  box-shadow:
+    0 8px 24px
+    rgba(236,140,25,.22);
+}
+
+.diya span {
+  position:absolute;
+
+  width:13px;
+  height:28px;
+
+  left:50%;
+  top:-25px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    radial-gradient(
+      circle at 50% 72%,
+      #fff3b0 0 12%,
+      #ffb31b 35%,
+      transparent 70%
+    );
+
+  border-radius:
+    50% 50% 45% 45%;
+
+  animation:
+    flicker
+    1.7s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.diya-left,
+.diya-right {
+  position:absolute;
+
+  z-index:5;
+
+  bottom:17%;
+}
+
+.diya-left {
+  left:12%;
+}
+
+.diya-right {
+  right:12%;
+}
+
+
+/* =========================================================
+   PETALS
+   ========================================================= */
+
+.petals {
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:6;
+
+  overflow:hidden;
+}
+
+.petals span {
+  position:absolute;
+
+  width:8px;
+  height:13px;
+
+  border-radius:
+    70% 30% 70% 30%;
+
+  background:#f4b51c;
+
+  left:
+    calc(
+      (var(--i)*17 + 7)*1%
+    );
+
+  top:-10%;
+
+  opacity:.62;
+
+  animation:
+    petalFall
+    calc(9s + var(--i)*.8s)
+    linear
+    infinite;
+
+  animation-delay:
+    calc(var(--i)*-.9s);
+
+  transform:rotate(25deg);
+}
+
+.petals span:nth-child(3n) {
+  background:#d83b62;
+}
+
+.petals span:nth-child(4n) {
+  background:#f2e0aa;
+}
+
+
+/* =========================================================
+   CLEAR SCROLL INVITATION
+   ========================================================= */
+
+.scroll-cue {
+  position:absolute;
+
+  z-index:20;
+
+  /*
+   * Above the floor but below Bappa's
+   * main visual area.
+   */
+  bottom:4.2%;
+
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:max-content;
+
+  max-width:92vw;
+
+  padding:8px 20px 9px;
+
+  text-align:center;
+
+  white-space:nowrap;
+
+  border:
+    1px solid
+    rgba(255,225,164,.28);
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(92,24,47,.34),
+      rgba(92,24,47,.20)
+    );
+
+  backdrop-filter:blur(7px);
+
+  color:#fff8e7;
+
+  box-shadow:
+    0 8px 25px
+    rgba(68,20,36,.16),
+    0 0 25px
+    rgba(255,198,91,.08);
+
+  text-shadow:
+    0 2px 10px
+    rgba(66,20,34,.55);
+
+  animation:
+    scrollCueFloat
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+.scroll-message {
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      20px,
+      2.5vw,
+      27px
+    );
+
+  font-weight:600;
+
+  letter-spacing:.025em;
+
+  line-height:1.05;
+}
+
+.scroll-hint {
+  margin-top:6px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:9px;
+
+  color:#ffd987;
+}
+
+.scroll-hint small {
+  font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+  font-size:8px;
+
+  font-weight:600;
+
+  letter-spacing:.22em;
+
+  line-height:1;
+}
+
+.scroll-hint span {
+  font-size:15px;
+
+  line-height:1;
+
+  opacity:.9;
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.welcome-scene {
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(225,72,115,.17),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(236,138,22,.17),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #fff7ea,
+      #ffe6d8 55%,
+      #f5cbd8
+    );
+
+  color:var(--maroon);
+
+  display:grid;
+
+  place-items:center;
+}
+
+.welcome-lights {
+  top:22px;
+  left:10%;
+  right:10%;
+
+  width:80%;
+}
+
+.welcome-lights span {
+  background:#d99535;
+
+  box-shadow:
+    0 0 16px
+    rgba(217,149,53,.45);
+}
+
+.welcome-layout {
+  width:min(1180px,90vw);
+
+  display:grid;
+
+  grid-template-columns:
+    1fr .9fr;
+
+  gap:
+    clamp(
+      40px,
+      8vw,
+      110px
+    );
+
+  align-items:center;
+}
+
+.editorial-copy {
+  max-width:590px;
+}
+
+.eyebrow {
+  letter-spacing:.2em;
+
+  font-size:10px;
+
+  font-weight:600;
+
+  color:#a85b30;
+}
+
+.editorial-copy h2,
+.anand-copy h2 {
+  font-size:
+    clamp(
+      46px,
+      6vw,
+      76px
+    );
+
+  line-height:.88;
+
+  margin:
+    18px 0 28px;
+
+  color:var(--maroon);
+}
+
+.editorial-copy p {
+  font-size:16px;
+
+  line-height:1.85;
+
+  color:#68333a;
+}
+
+.morya,
+.closing-morya {
+  font-family:
+    "Noto Sans Devanagari";
+
+  font-size:22px;
+
+  color:#a32a52;
+
+  margin-top:28px;
+}
+
+.portrait-stage {
+  position:relative;
+
+  min-height:620px;
+
+  display:grid;
+
+  place-items:center;
+}
+
+.portrait-stage .bappa-frame {
+  width:min(470px,80vw);
+
+  z-index:2;
+}
+
+.portrait-stage .bappa-image {
+  box-shadow:
+    0 30px 80px
+    rgba(139,53,65,.16);
+}
+
+.portrait-ring {
+  position:absolute;
+
+  width:92%;
+
+  aspect-ratio:1;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    rgba(167,65,72,.24);
+
+  box-shadow:
+    0 0 0 32px
+    rgba(188,77,92,.035),
+    0 0 80px
+    rgba(188,77,92,.14);
+}
+
+.floating-shri {
+  position:absolute;
+
+  right:5%;
+  top:15%;
+
+  font-family:
+    "Noto Sans Devanagari";
+
+  font-size:55px;
+
+  color:
+    rgba(150,66,65,.25);
+}
+
+.soft-orb {
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(1px);
+}
+
+.orb-a {
+  width:160px;
+  height:160px;
+
+  right:3%;
+  top:7%;
+
+  background:
+    rgba(231,148,36,.14);
+}
+
+.orb-b {
+  width:240px;
+  height:240px;
+
+  left:-70px;
+  bottom:-60px;
+
+  background:
+    rgba(180,48,93,.10);
+}
+
+
+/* =========================================================
+   STHAPANA
+   ========================================================= */
+
+.sthapana-scene {
+  display:grid;
+
+  place-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #641725,
+      #81203b 52%,
+      #54235d
+    );
+
+  color:var(--cream);
+}
+
+.backdrop-altar {
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(229,146,29,.3),
+      transparent 35%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(227,158,63,.05) 0 1px,
+      transparent 1px 70px
+    );
+}
+
+.section-lights {
+  top:24px;
+
+  left:10%;
+
+  width:80%;
+}
+
+.section-lights span {
+  width:9px;
+  height:9px;
+}
+
+.marigold-border {
+  position:absolute;
+
+  top:0;
+  left:0;
+  right:0;
+
+  height:18px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #e9901b 0 22px,
+      #f3bd39 22px 42px,
+      #c93b67 42px 62px
+    );
+
+  opacity:.8;
+}
+
+.sthapana-layout {
+  width:min(1180px,90vw);
+
+  display:grid;
+
+  grid-template-columns:
+    1.05fr .95fr;
+
+  align-items:center;
+
+  gap:
+    clamp(
+      40px,
+      7vw,
+      100px
+    );
+}
+
+.sthapana-art {
+  position:relative;
+
+  display:grid;
+
+  place-items:center;
+
+  min-height:650px;
+}
+
+.sthapana-art .bappa-frame {
+  width:min(560px,78vw);
+
+  z-index:3;
+}
+
+.sthapana-art .bappa-image {
+  max-height:72vh;
+
+  box-shadow:
+    0 30px 60px
+    rgba(86,28,48,.24);
+}
+
+.rangoli {
+  position:absolute;
+
+  width:410px;
+
+  max-width:72vw;
+
+  aspect-ratio:1;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    rgba(245,197,97,.35);
+
+  box-shadow:
+    0 0 0 18px
+    rgba(239,147,22,.04),
+    inset 0 0 50px
+    rgba(239,147,22,.06);
+
+  display:grid;
+
+  place-items:center;
+
+  transform:rotate(15deg);
+}
+
+.rangoli:before,
+.rangoli:after {
+  content:"";
+
+  position:absolute;
+
+  inset:12%;
+
+  border:
+    1px dashed
+    rgba(245,197,97,.25);
+
+  border-radius:50%;
+}
+
+.rangoli:after {
+  inset:27%;
+
+  transform:rotate(45deg);
+}
+
+.rangoli span {
+  font-family:
+    "Noto Sans Devanagari";
+
+  font-size:45px;
+
+  color:
+    rgba(245,197,97,.3);
+}
+
+.altar-diyas {
+  position:absolute;
+
+  bottom:9%;
+
+  display:flex;
+
+  gap:180px;
+
+  z-index:5;
+}
+
+.event-copy {
+  max-width:470px;
+}
+
+/*
+ * IMPORTANT:
+ * There is now only one heading.
+ */
+
+.event-copy h2 {
+  font-size:
+    clamp(
+      52px,
+      6vw,
+      82px
+    );
+
+  line-height:.8;
+
+  margin:
+    0 0 25px;
+}
+
+.date-display {
+  font-size:18px;
+
+  letter-spacing:.12em;
+
+  color:#f8d49c;
+}
+
+.ornament-line {
+  color:#e9a13b;
+
+  margin:28px 0;
+}
+
+.event-copy p {
+  line-height:1.8;
+
+  color:#f0d5ba;
+}
+
+.mantra {
+  margin-top:28px;
+
+  font-family:
+    "Noto Sans Devanagari";
+
+  color:#ffca71;
+
+  font-size:22px;
+}
+
+.dark-morya {
+  color:#ffd06b;
+}
+
+
+/* =========================================================
+   AARTI
+   ========================================================= */
+
+.bhakti-scene {
+  background:
+    radial-gradient(
+      circle at 72% 50%,
+      rgba(244,158,39,.34),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(147,24,50,.45),
+      transparent 35%
+    ),
+    linear-gradient(
+      120deg,
+      #761a2d,
+      #a92e50 55%,
+      #51276c
+    );
+
+  display:grid;
+
+  place-items:center;
+}
+
+.bhakti-layout {
+  width:min(1160px,90vw);
+
+  display:grid;
+
+  grid-template-columns:
+    .8fr 1.2fr;
+
+  gap:60px;
+
+  align-items:center;
+}
+
+.bhakti-copy h2 {
+  font-size:
+    clamp(
+      56px,
+      7vw,
+      96px
+    );
+
+  margin:
+    2px 0 30px;
+
+  line-height:.78;
+}
+
+.time-list {
+  border-top:
+    1px solid
+    rgba(255,215,154,.22);
+}
+
+.time-list div {
+  display:flex;
+
+  gap:20px;
+
+  padding:18px 0;
+
+  border-bottom:
+    1px solid
+    rgba(255,215,154,.22);
+
+  align-items:center;
+}
+
+.time-list span {
+  font-size:11px;
+
+  color:#dc9b48;
+}
+
+.time-list strong {
+  font-weight:500;
+
+  color:#ffe5b4;
+}
+
+.small-copy {
+  color:
+    rgba(255,235,200,.74);
+
+  line-height:1.7;
+
+  font-size:13px;
+
+  margin-top:25px;
+}
+
+.aarti-visual {
+  position:relative;
+
+  min-height:650px;
+
+  display:grid;
+
+  place-items:center;
+}
+
+.aarti-visual .bappa-frame {
+  width:min(590px,80vw);
+
+  z-index:3;
+}
+
+.aarti-visual .bappa-image {
+  box-shadow:
+    0 28px 70px
+    rgba(86,24,37,.18);
+}
+
+.aarti-halo {
+  position:absolute;
+
+  width:80%;
+
+  aspect-ratio:1;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,196,83,.25),
+      transparent 65%
+    );
+
+  filter:blur(14px);
+}
+
+.incense {
+  position:absolute;
+
+  right:3%;
+  bottom:18%;
+}
+
+.incense i {
+  display:block;
+
+  width:2px;
+
+  height:75px;
+
+  background:
+    rgba(255,229,198,.32);
+
+  margin:8px;
+
+  border-radius:50%;
+
+  filter:blur(1px);
+
+  animation:
+    smoke
+    4s
+    ease-in-out
+    infinite;
+}
+
+.incense i:nth-child(2) {
+  animation-delay:-1.2s;
+
+  height:60px;
+}
+
+.incense i:nth-child(3) {
+  animation-delay:-2.4s;
+
+  height:90px;
+}
+
+.aarti-diya {
+  position:absolute;
+
+  bottom:13%;
+
+  z-index:6;
+}
+
+.aarti-diya-left {
+  left:2%;
+}
+
+.aarti-diya-right {
+  right:2%;
+}
+
+.bhakti-morya {
+  margin-top:20px;
+
+  color:#ffd16e;
+}
+
+
+/* =========================================================
+   ANAND
+   ========================================================= */
+
+.anand-scene {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(247,162,44,.3),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #671747,
+      #92245f 45%,
+      #284a78
+    );
+
+  display:grid;
+
+  place-items:center;
+}
+
+.anand-layout {
+  width:min(1120px,90vw);
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:70px;
+
+  align-items:center;
+}
+
+.anand-copy h2 {
+  color:#fff0d4;
+
+  max-width:570px;
+}
+
+.anand-copy .every {
+  color:#f7c86d;
+
+  text-transform:uppercase;
+
+  letter-spacing:.2em;
+
+  font-size:11px;
+}
+
+.time-pill {
+  display:inline-block;
+
+  border:
+    1px solid
+    rgba(255,217,150,.42);
+
+  border-radius:999px;
+
+  padding:11px 16px;
+
+  color:#ffe0a6;
+
+  margin:8px 0 22px;
+}
+
+.anand-copy p {
+  color:
+    rgba(255,235,214,.84);
+
+  line-height:1.7;
+}
+
+.music-notes {
+  color:#f5b750;
+
+  letter-spacing:.5em;
+
+  font-size:24px;
+
+  margin-top:25px;
+}
+
+.light-string {
+  position:absolute;
+
+  top:9%;
+  left:50%;
+
+  width:80%;
+
+  transform:
+    translateX(-50%);
+
+  display:flex;
+
+  justify-content:space-between;
+}
+
+.light-string:before {
+  content:"";
+
+  position:absolute;
+
+  top:8px;
+
+  left:0;
+  right:0;
+
+  height:1px;
+
+  background:
+    rgba(255,222,160,.35);
+}
+
+.light-string span {
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#ffd46e;
+
+  box-shadow:
+    0 0 22px
+    rgba(255,204,87,.85);
+
+  z-index:2;
+
+  animation:
+    twinkle
+    1.8s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.family-window {
+  height:
+    min(630px,75vh);
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:
+    180px 180px 20px 20px;
+
+  border:
+    1px solid
+    rgba(255,222,160,.28);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,184,78,.12),
+      rgba(91,37,92,.26)
+    ),
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(255,178,57,.42),
+      transparent 25%
+    );
+
+  box-shadow:
+    0 35px 70px
+    rgba(102,42,76,.18);
+}
+
+.window-glow {
+  position:absolute;
+
+  inset:12%;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,170,53,.13);
+
+  filter:blur(30px);
+}
+
+.window-arch {
+  position:absolute;
+
+  inset:8% 10% 0;
+
+  border:
+    1px solid
+    rgba(255,216,138,.25);
+
+  border-bottom:0;
+
+  border-radius:
+    50% 50% 0 0;
+}
+
+.bappa-mini {
+  position:absolute;
+
+  bottom:4%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  width:70%;
+
+  z-index:3;
+}
+
+.bappa-mini img {
+  display:block;
+
+  width:100%;
+
+  border-radius:20px;
+
+  filter:saturate(1.05);
+}
+
+.home-lamps {
+  position:absolute;
+
+  bottom:8%;
+
+  left:8%;
+  right:8%;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  z-index:5;
+}
+
+.home-lamps .diya {
+  transform:scale(.75);
+}
+
+
+/* =========================================================
+   VISARJAN
+   ========================================================= */
+
+.visarjan-scene {
+  background:
+    linear-gradient(
+      180deg,
+      #ffb45f 0%,
+      #f58a72 27%,
+      #e56b82 48%,
+      #55c2c5 72%,
+      #36b6d0 100%
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:flex-start;
+
+  padding:
+    7vh 20px 6vh;
+}
+
+.sunset {
+  position:absolute;
+
+  width:270px;
+  height:270px;
+
+  border-radius:50%;
+
+  top:12%;
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      #fff0ae 0%,
+      #ffd16e 40%,
+      #f59b4d 54%,
+      transparent 72%
+    );
+
+  filter:blur(1px);
+
+  opacity:.94;
+}
+
+.water {
+  position:absolute;
+
+  bottom:0;
+
+  left:0;
+  right:0;
+
+  height:43%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(52,180,196,.2),
+      rgba(34,173,203,.58)
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,239,188,.2) 0 2px,
+      transparent 2px 18px
+    );
+}
+
+.water span {
+  position:absolute;
+
+  height:1px;
+
+  background:
+    rgba(255,238,191,.55);
+
+  width:24%;
+
+  animation:
+    wave
+    6s
+    ease-in-out
+    infinite;
+}
+
+.water span:nth-child(1) {
+  top:22%;
+  left:7%;
+}
+
+.water span:nth-child(2) {
+  top:44%;
+  right:8%;
+
+  animation-delay:-2s;
+}
+
+.water span:nth-child(3) {
+  top:70%;
+  left:35%;
+
+  animation-delay:-4s;
+}
+
+.visarjan-lights {
+  top:22px;
+
+  left:10%;
+
+  width:80%;
+}
+
+.visarjan-copy {
+  position:relative;
+
+  z-index:5;
+
+  width:min(720px,92vw);
+
+  text-align:center;
+
+  text-shadow:
+    0 3px 16px
+    rgba(111,48,57,.14);
+}
+
+.visarjan-copy h2 {
+  font-size:
+    clamp(
+      56px,
+      8vw,
+      100px
+    );
+
+  line-height:.8;
+
+  margin:
+    4px 0 18px;
+}
+
+.visarjan-date {
+  font-size:14px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+
+  color:#fff0bd;
+}
+
+.visarjan-time {
+  margin-top:8px;
+
+  color:#fff8d8;
+}
+
+.visarjan-bappa {
+  position:relative;
+
+  z-index:4;
+
+  width:min(320px,38vw);
+
+  margin:2vh 0 0;
+
+  display:grid;
+
+  place-items:center;
+
+  filter:
+    drop-shadow(
+      0 22px 34px
+      rgba(80,48,57,.16)
+    );
+}
+
+.visarjan-halo {
+  position:absolute;
+
+  width:125%;
+
+  aspect-ratio:1;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,245,190,.3),
+      transparent 67%
+    );
+
+  filter:blur(12px);
+}
+
+.visarjan-bappa img {
+  width:100%;
+
+  display:block;
+
+  border-radius:22px;
+
+  filter:
+    saturate(1.05)
+    contrast(.99);
+
+  box-shadow:
+    0 18px 45px
+    rgba(92,46,58,.14);
+}
+
+.visarjan-copy-bottom {
+  margin-top:2vh;
+}
+
+.visarjan-copy p {
+  max-width:560px;
+
+  margin:
+    18px auto 10px;
+
+  line-height:1.8;
+
+  color:
+    rgba(255,250,229,.95);
+}
+
+.visarjan-copy em {
+  display:block;
+
+  font-family:
+    "Cormorant Garamond";
+
+  font-size:28px;
+
+  color:#fff7db;
+}
+
+.visarjan-copy strong {
+  display:block;
+
+  font-family:
+    "Noto Sans Devanagari";
+
+  font-size:25px;
+
+  margin-top:20px;
+
+  color:#fff3b8;
+}
+
+
+/* =========================================================
+   CLOSING
+   ========================================================= */
+
+.closing {
+  min-height:46svh;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255,193,75,.3),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #b83c5b,
+      #df6681 46%,
+      #8b4d9d 100%
+    );
+
+  display:grid;
+
+  place-items:center;
+
+  text-align:center;
+
+  padding:70px 20px;
+
+  color:#fff2d7;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.closing .section-lights {
+  top:26px;
+}
+
+.closing-symbol {
+  font-family:
+    "Noto Sans Devanagari";
+
+  color:#ffd36b;
+
+  font-size:46px;
+}
+
+.closing p {
+  margin:12px 0 6px;
+
+  font-family:
+    "Cormorant Garamond";
+
+  font-size:30px;
+}
+
+.closing span {
+  font-size:11px;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+
+  color:#ffe1a6;
+}
+
+.closing h3 {
+  font-size:37px;
+
+  margin:13px 0;
+
+  font-weight:500;
+}
+
+.closing-morya {
+  color:#fff2b4;
+}
+
+.closing-line {
+  margin-top:22px;
+
+  color:#ffe08a;
+
+  font-family:
+    "Noto Sans Devanagari";
+}
+
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+
+.reveal {
+  opacity:0;
+
+  transform:
+    translateY(30px);
+
+  transition:
+    opacity .9s ease,
+    transform .9s
+      cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.is-visible {
+  opacity:1;
+
+  transform:none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes flicker {
+  from {
+    transform:
+      translateX(-50%)
+      scale(.88)
+      rotate(-2deg);
+
+    opacity:.78;
+  }
+
+  to {
+    transform:
+      translateX(-50%)
+      scale(1.08)
+      rotate(3deg);
+
+    opacity:1;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity:.45;
+
+    transform:
+      scale(.72);
+  }
+
+  to {
+    opacity:1;
+
+    transform:
+      scale(1.15);
+  }
+}
+
+@keyframes petalFall {
+  to {
+    transform:
+      translate3d(
+        calc((var(--i) - 5)*20px),
+        115vh,
+        0
+      )
+      rotate(420deg);
+  }
+}
+
+@keyframes smoke {
+  50% {
+    transform:
+      translate(-8px,-10px)
+      rotate(4deg);
+
+    opacity:.15;
+  }
+}
+
+@keyframes wave {
+  50% {
+    transform:
+      translateX(22px);
+
+    opacity:.55;
+  }
+}
+
+@keyframes openPulse {
+  50% {
+    transform:
+      scale(1.08);
+
+    opacity:.8;
+  }
+}
+
+@keyframes tapGlow {
+  50% {
+    box-shadow:
+      0 0 42px
+      rgba(255,184,65,.42);
+
+    transform:
+      translateY(-1px);
+  }
+}
+
+@keyframes scrollCueFloat {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      translateY(-4px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:820px) {
+
+  .top-controls {
+    top:10px;
+    right:10px;
+  }
+
+  .hero-copy {
+    top:7%;
+  }
+
+  .hero-copy h1 {
+    font-size:
+      clamp(
+        45px,
+        13vw,
+        68px
+      );
+  }
+
+  .hero-bappa {
+    width:min(440px,82vw);
+
+    bottom:12%;
+  }
+
+  .diya-left {
+    left:5%;
+  }
+
+  .diya-right {
+    right:5%;
+  }
+
+
+  .welcome-layout,
+  .sthapana-layout,
+  .bhakti-layout,
+  .anand-layout {
+
+    grid-template-columns:1fr;
+
+    gap:30px;
+
+    width:min(92vw,620px);
+  }
+
+
+  .welcome-scene,
+  .sthapana-scene,
+  .bhakti-scene,
+  .anand-scene {
+
+    min-height:auto;
+
+    padding:100px 0;
+  }
+
+
+  .portrait-stage {
+    min-height:520px;
+  }
+
+  .portrait-ring {
+    width:88%;
+  }
+
+
+  .sthapana-art {
+    min-height:520px;
+
+    order:1;
+  }
+
+  .event-copy {
+    order:2;
+
+    text-align:center;
+
+    margin:0 auto;
+
+    padding-bottom:40px;
+  }
+
+  .altar-diyas {
+    gap:120px;
+  }
+
+
+  .bhakti-copy {
+    order:2;
+
+    text-align:center;
+  }
+
+  .aarti-visual {
+    min-height:510px;
+
+    order:1;
+  }
+
+  .time-list {
+    text-align:left;
+  }
+
+
+  .anand-copy {
+    text-align:center;
+
+    order:2;
+
+    padding-bottom:30px;
+  }
+
+  .family-window {
+    height:540px;
+
+    order:1;
+
+    width:100%;
+  }
+
+
+  .visarjan-scene {
+    min-height:auto;
+
+    padding-top:90px;
+  }
+
+  .visarjan-bappa {
+    width:min(300px,66vw);
+  }
+
+  .visarjan-copy-bottom {
+    padding-bottom:30px;
+  }
+
+
+  /* Tablet scroll invitation */
+
+  .scroll-cue {
+    bottom:3.2%;
+  }
+
+  .scroll-message {
+    font-size:
+      clamp(
+        20px,
+        4vw,
+        28px
+      );
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:520px) {
+
+  .language-switcher button {
+    padding:6px 8px;
+
+    font-size:10px;
+  }
+
+  .music-control small {
+    display:none;
+  }
+
+
+  /* -------------------------
+     MOBILE HERO
+     ------------------------- */
+
+  .hero-copy {
+    top:5%;
+
+    width:96vw;
+  }
+
+  .om-mark {
+    font-size:38px;
+  }
+
+  .invocation {
+    font-size:11px;
+  }
+
+  .hero-copy h1 {
+    font-size:
+      clamp(
+        40px,
+        11.5vw,
+        58px
+      );
+
+    line-height:.9;
+  }
+
+  .hero-mantra {
+    font-size:9px;
+
+    line-height:1.5;
+
+    margin-top:6px;
+  }
+
+
+  .hero-bappa {
+    bottom:13%;
+
+    width:84vw;
+
+    max-height:50vh;
+  }
+
+  .hero-bappa .bappa-image {
+    max-height:50vh;
+  }
+
+
+  /* -------------------------
+     MOBILE SCROLL INVITATION
+     ------------------------- */
+
+  .scroll-cue {
+    bottom:2.2%;
+
+    max-width:94vw;
+
+    padding:
+      7px 15px 8px;
+  }
+
+  .scroll-message {
+    font-size:21px;
+
+    letter-spacing:.025em;
+  }
+
+  .scroll-hint {
+    margin-top:6px;
+
+    gap:7px;
+  }
+
+  .scroll-hint small {
+    font-size:7px;
+
+    letter-spacing:.16em;
+  }
+
+  .scroll-hint span {
+    font-size:14px;
+  }
+
+
+  .hero-sub {
+    letter-spacing:.12em;
+  }
+
+  .hero-morya {
+    font-size:17px;
+  }
+
+
+  /* -------------------------
+     OTHER MOBILE SECTIONS
+     ------------------------- */
+
+  .editorial-copy h2,
+  .anand-copy h2 {
+    font-size:52px;
+  }
+
+  .portrait-stage {
+    min-height:450px;
+  }
+
+  .sthapana-art {
+    min-height:440px;
+  }
+
+  .rangoli {
+    width:330px;
+  }
+
+  .altar-diyas {
+    gap:80px;
+
+    bottom:8%;
+  }
+
+  .aarti-visual {
+    min-height:430px;
+  }
+
+  .aarti-diya-left {
+    left:-1%;
+  }
+
+  .aarti-diya-right {
+    right:-1%;
+  }
+
+  .family-window {
+    height:470px;
+
+    border-radius:
+      120px 120px 16px 16px;
+  }
+
+  .bappa-mini {
+    width:82%;
+  }
+
+  .visarjan-bappa {
+    width:
+      min(285px,72vw);
+  }
+
+  .visarjan-copy {
+    width:92vw;
+  }
+
+  .visarjan-copy h2 {
+    font-size:58px;
+  }
+
+
+  /* -------------------------
+     OPENING SCREEN
+     ------------------------- */
+
+  .open-card {
+    padding:
+      46px 22px 34px;
+  }
+
+  .open-mantra {
+    font-size:12px;
+  }
+
+  .festival-lights {
+    width:82%;
+
+    left:9%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce) {
+
+  html {
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:.001ms !important;
+
+    animation-iteration-count:1 !important;
+
+    transition-duration:.001ms !important;
+  }
+
+  .reveal {
+    opacity:1;
+
+    transform:none;
+  }
+}
+/* =========================================================
+   DESKTOP HERO REFINEMENT
+   IMPORTANT:
+   This intentionally applies ONLY above 820px.
+   Mobile layout remains unchanged.
+   ========================================================= */
+
+@media (min-width:821px) {
+
+  /* ---------------------------------------------------------
+     HERO OVERALL
+     --------------------------------------------------------- */
+
+  .hero-scene {
+    min-height:100svh;
+    height:100svh;
+  }
+
+
+  /* ---------------------------------------------------------
+     HERO TITLE
+     --------------------------------------------------------- */
+
+  .hero-copy {
+    top:4.2%;
+
+    width:min(1000px,90vw);
+
+    gap:2px;
+  }
+
+  .hero-copy .om-mark {
+    font-size:42px;
+  }
+
+  .hero-copy .invocation {
+    font-size:12px;
+    margin-bottom:4px;
+  }
+
+  .hero-copy h1 {
+    font-size:
+      clamp(
+        52px,
+        4.5vw,
+        70px
+      );
+
+    line-height:.88;
+
+    letter-spacing:-.015em;
+  }
+
+  .hero-mantra {
+    margin-top:7px;
+
+    font-size:10px;
+
+    line-height:1.45;
+  }
+
+
+  /* ---------------------------------------------------------
+     BAPPA
+     
+     Smaller + slightly higher.
+     This creates a clean gap between Bappa and
+     the invitation pill.
+     --------------------------------------------------------- */
+
+  .hero-bappa {
+    width:min(410px,30vw);
+
+    max-height:46vh;
+
+    bottom:13.5%;
+
+    left:50%;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .hero-bappa .bappa-image {
+    max-height:46vh;
+
+    width:auto;
+  }
+
+
+  /* ---------------------------------------------------------
+     ARCH
+     
+     Keep the decorative arch centered around Bappa.
+     --------------------------------------------------------- */
+
+  .hero-scene .arch-one {
+    width:min(760px,72vw);
+
+    height:63vh;
+
+    bottom:14%;
+  }
+
+  .hero-scene .arch-two {
+    width:min(650px,63vw);
+
+    height:55vh;
+
+    bottom:14%;
+  }
+
+
+  /* ---------------------------------------------------------
+     SIDE DIYAS
+     --------------------------------------------------------- */
+
+  .hero-scene .diya-left,
+  .hero-scene .diya-right {
+    bottom:16%;
+
+    transform:scale(.9);
+  }
+
+  .hero-scene .diya-left {
+    left:11%;
+  }
+
+  .hero-scene .diya-right {
+    right:11%;
+  }
+
+
+  /* ---------------------------------------------------------
+     FLOOR
+     
+     Slightly shorter on desktop so it doesn't eat
+     into the hero composition.
+     --------------------------------------------------------- */
+
+  .hero-scene .altar-floor {
+    height:13%;
+
+    bottom:-1%;
+  }
+
+
+  /* ---------------------------------------------------------
+     "COME, CELEBRATE WITH US"
+     
+     The biggest fix.
+     
+     It is now deliberately BELOW Bappa rather than
+     sitting on top of its bottom edge.
+     --------------------------------------------------------- */
+
+  .hero-scene .scroll-cue {
+    bottom:2.1%;
+
+    padding:
+      8px 24px 9px;
+
+    min-width:330px;
+
+    border-radius:999px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(91,24,47,.62),
+        rgba(91,24,47,.48)
+      );
+
+    border:
+      1px solid
+      rgba(255,225,164,.38);
+
+    box-shadow:
+      0 10px 28px
+      rgba(68,20,36,.18),
+
+      0 0 32px
+      rgba(255,198,91,.09);
+  }
+
+  .hero-scene .scroll-message {
+    font-size:26px;
+
+    line-height:1;
+
+    font-weight:600;
+
+    letter-spacing:.02em;
+  }
+
+  .hero-scene .scroll-hint {
+    margin-top:7px;
+
+    gap:10px;
+  }
+
+  .hero-scene .scroll-hint small {
+    font-size:8px;
+
+    letter-spacing:.24em;
+  }
+
+  .hero-scene .scroll-hint span {
+    font-size:15px;
+  }
+
+
+  /* ---------------------------------------------------------
+     TORAN
+     
+     Keep it visible but prevent it from competing with
+     the hero title.
+     --------------------------------------------------------- */
+
+  .hero-scene .toran {
+    width:min(1100px,90vw);
+
+    padding:0 3%;
+  }
+
+  .hero-scene .toran i {
+    width:46px;
+    height:66px;
+  }
+
+
+  /* ---------------------------------------------------------
+     PETALS
+     --------------------------------------------------------- */
+
+  .hero-scene .petals {
+    z-index:6;
+  }
+}
+/* =========================================================
+   FINAL DESKTOP HERO CENTERING FIX
+   ========================================================= */
+
+@media (min-width: 821px) {
+
+  .hero-scene {
+    position: relative;
+    width: 100vw;
+    min-width: 100vw;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /*
+   * Use the actual viewport center rather than relying
+   * on the hero's containing layout.
+   */
+  .hero-copy {
+    position: absolute;
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .hero-bappa {
+    position: absolute;
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .hero-scene .arch-one,
+  .hero-scene .arch-two {
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .hero-scene .toran {
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .hero-scene .hero-lights {
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+
+  .hero-scene .scroll-cue {
+    left: 50vw;
+    transform: translateX(-50%);
+  }
+}
